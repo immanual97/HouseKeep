@@ -1,0 +1,46 @@
+.container {
+    margin-top: 50px;
+    margin-bottom: 80px;
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    background-color:white;
+    color:white;
+    display: flex;
+    justify-content: center;
+  }
+
+  .card {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    width:500px;
+    height: 550px;
+    background-color: #1E90FF;
+  }
+  
+  input{
+      margin-top: 20px;
+      outline: none;
+      width: 50%;
+  }
+
+  button{
+      margin-top: 40px;
+      background:aquamarine ;
+      color:black;
+      padding: 10px;
+      cursor: pointer;
+      margin-left: 8px;
+      border: none;
+      
+  }
+
+  button:hover{
+    background:white ;
+    color:black;
+    transition-duration: 0.5s;
+    
+}

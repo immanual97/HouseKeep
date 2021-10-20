@@ -1,0 +1,51 @@
+<app-header></app-header>
+
+<div class="sidebar">
+    <a routerLink="/customer/workrequest">New Work Request</a>
+    <a routerLink="/customer/status"  class="active">Status</a>
+    <a routerLink="/customer/address">Address</a>
+    <a routerLink="/customer/history">History</a>
+    <a routerLink="/customer/changepassword">Change Password</a>
+  </div>
+
+<div class="container">
+  <h3 style="justify-content:center;text-align:center;">Status of Your Work Requests</h3>
+      
+  <table class="table">
+    
+    <thead>
+      <tr>
+        <th scope="col" style="width:100px;" (click)="sort('user')">User Name &nbsp;&nbsp;</th>
+
+        <th scope="col" style="width:100px;">Technician Name </th>
+        <th scope="col">Service</th>
+        <th scope="col">Date Time</th>
+        <th scope="col">Accepted</th>
+        <th scope="col">Workstatus</th>
+        <th scope="col">Cost</th>
+        <th scope="col">Payed</th>
+        <th scope="col">Rating</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of allwork | orderBy: key: reverse |paginate : {itemsPerPage:4,currentPage:p}">
+      <tr>
+        <td>{{item.user}}</td>
+        <td>{{item.technician}}</td>
+        <td>{{item.service}}</td>
+        <td>{{item.datetime | date:'medium'}}</td>
+        <td>{{item.accepted}}</td>
+        <td>{{item.workstatus}}</td>
+        <td>{{item.cost}}</td>
+        <td>{{item.payed}}</td>
+        <td>{{item.rating}}</td>
+      </tr>
+    </tbody>
+    
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+
+
+
+
+<app-footer></app-footer>

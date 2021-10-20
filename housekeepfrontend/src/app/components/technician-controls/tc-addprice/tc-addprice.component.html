@@ -1,0 +1,88 @@
+<app-header></app-header>
+
+
+<div class="sidebar">
+    <a routerLink="/technician/changeworkstatus">Update WorkStatus</a>
+    <a routerLink="/technician/setprice" class="active">Set Price</a>
+    <a routerLink="/technician/payed">Customer Pay</a>
+    <a routerLink="/technician/acceptance">Work to be Accepted</a>
+    <a routerLink="/technician/changepassword">Change Password</a>
+</div>
+
+<div class="container">
+  <h3 style="justify-content:center;text-align:center;">Set Amount</h3>
+      
+  <table class="table">
+    
+    <thead>
+      <tr>
+        <th scope="col">WR id</th>
+        <th scope="col" style="width:150px;">User Name &nbsp;&nbsp;</th>
+        <th scope="col">Service</th>
+        <th scope="col">Date Time</th>
+        <th scope="col">Cost</th>    
+        <th scope="col">Payed</th> 
+        <th scope="col">Work Status</th> 
+        <th scope="col">Operation</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of allwork |paginate : {itemsPerPage:4,currentPage:p}">
+      <tr>
+        <td>{{item.wid}} </td>
+        <td>{{item.user}} </td>
+        <td>{{item.service}}</td>
+        <td>{{item.datetime | date :'medium'}}</td>
+        <td>{{item.cost}}</td>
+        <td>{{item.payed}}</td>
+        <td>{{item.workstatus}}</td>
+        <td>
+            <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editClick(item)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                </svg>
+    
+              </button>&nbsp;&nbsp;
+        </td>
+      </tr>
+    </tbody>
+    
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1"
+   aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered">
+<div class="modal-content">
+   <div class="modal-header">
+       <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+       <button type="button" class="btn-close" data-bs-dismiss="modal"
+       aria-label="Close"></button>
+   </div>
+   <div class="modal-body">
+       <div class="input-group mb-2">
+           <input type="text" class="form-control"  placeholder="First Name" [(ngModel)]="cost">
+       </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+    <button type="button" (click)="updateClick(wid)"
+    *ngIf="wid!=0" class="btn btn-primary" data-bs-dismiss="modal">
+    Update    
+    </button>
+
+  </div>
+
+       
+
+   </div>
+
+</div>
+</div>
+</div>
+
+
+
+<app-footer></app-footer>

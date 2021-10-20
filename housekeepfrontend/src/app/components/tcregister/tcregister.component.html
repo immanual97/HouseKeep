@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div class="container" >
+<div class="card">
+    <h2 style="justify-content:center;display:flex;">Technician Registration</h2>
+    <form>
+        <input style="margin-top:50px;" type="text" placeholder="First Name" name="fname" [(ngModel)]="fname" required/>
+        <br>
+        <input type="text" placeholder="Last Name" name="lname" [(ngModel)]="lname" required/>
+        <br>
+        <input type="email" placeholder="Email" name="email" [(ngModel)]="email" required/>
+        <br>
+        <input type="password" placeholder="Password" name="password" [(ngModel)]="password" required/>
+        <br>
+        <input type="password" placeholder="Confirm Password" name="password1" [(ngModel)]="password2" required/>
+        <br>
+        <br>
+        
+        <label for="service" style="margin-left:-120px;color: white;">Choose service</label>
+        <br>
+
+        <select class="form-select" id="service" name="service"  style="width:240px;margin-left:120px;margin-top:25px;" aria-label="Please choose" [(ngModel)]="service">   
+           
+
+            <option value="undefined" disabled> Please choose...</option>
+            <option value="1">Painting</option>
+            <option value="4">Plumbing</option>
+            <option value="5">Carpentry</option>
+            <option value="6">Electrical Work</option>
+            <option value="7">Flooring</option>
+            <option value="8">Cleaning</option>
+          </select>
+        <br>
+        <button type="submit" name="register" (click)="technicianregister()">Register</button>
+        <button routerLink="/register">Customer Registration</button>
+    </form>
+</div>
+</div>
+
+<app-footer></app-footer>
